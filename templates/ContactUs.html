@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us </title>
+  
+   <link rel="stylesheet" href="../Styles/contact.css">
+   <link rel="stylesheet" href="../Styles/Home-style.css">
+   
+</head>
+<body>
+   
+
+
+
+
+      <div class="topnav" id="myTopnav">
+        <a href="../templates/Home.html" >Home</a>
+        <a href="../templates/Features.html">Features</a>
+        <a href="../templates/ContactUs.html">Contact Us</a>
+        <a href="../templates/About.html">About</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+
+
+<div class="container">
+    <form action="	https://sheetdb.io/api/v1/tegg1q5rb77tb" method="post" id="sheetdb-form">
+  
+      <label for="fname">First Name</label>
+      <input type="text" id="fname" name="data[fname]" placeholder="Your name.."  >
+  
+      <label for="lname">Last Name</label>
+      <input type="text" id="lname" name="data[lname]" placeholder="Your last name.." >
+  
+      <label for="pnumber">Phone number</label>
+      <input type="text" id="pnumber" name="data[pnumber]" placeholder="Your phone number.." >
+      
+  
+      <label for="subject">Comments</label>
+      <textarea id="subject" name="data[subject]" placeholder="Write something.." style="height:200px"></textarea>
+  
+      <input type="submit" value="Submit">
+  
+    </form>
+  </div>
+
+  <div class="footer">
+    <p>Minnesota state university property </p>
+  </div>
+
+<script>
+    function toggleNavbar() {
+        var x = document.getElementById("myNavbar");
+        if (x.className === "navbar") {
+            x.className += " responsive";
+        } else {
+            x.className = "navbar";
+        }
+    }
+
+
+
+
+
+    var form = document.getElementById('sheetdb-form');
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+      fetch(form.action, {
+          method : "POST",
+          body: new FormData(document.getElementById("sheetdb-form")),
+      }).then(
+          response => response.json()
+      ).then(
+        alert("your form has been sent successfully ")
+      )
+    
+
+      });
+
+
+
+      function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+          x.className += " responsive";
+        } else {
+          x.className = "topnav";
+        }
+      }
+</script>
+
+</body>
+</html>

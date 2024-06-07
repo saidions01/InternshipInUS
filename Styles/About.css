@@ -1,0 +1,39 @@
+.container p{
+  font-size:20px;
+}
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  
+}
+
+
+.container {
+ 
+  display: flex;
+  flex-direction: column;
+  margin: 50px auto;
+  padding: 0 20px;
+
+}
+h1 {
+  text-align: center;
+}
+
+
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #480059;
+    color: white;
+    text-align: center;
+    height: 70px;
+  }
+  
+  .footer p{
+    padding: 20px;
+  }

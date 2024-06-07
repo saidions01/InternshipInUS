@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features</title>
+    <link rel="stylesheet" href="../Styles/contact.css">
+    <link rel="stylesheet" href="../Styles/features.css">
+    <link rel="stylesheet" href="../Styles/Home-style.css">
+</head>
+<body>
+    <div class="topnav" id="myTopnav">
+        <a href="Home.html">Home</a>
+        <a href="Features.html" class="active">Features</a>
+        <a href="ContactUs.html">Contact Us</a>
+        <a href="About.html">About</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars"></i>
+        </a>
+    </div>
+
+    <div class="chat-box">
+        <div class="chat-log" id="chat-log"></div>
+        <input type="text" id="user-input" class="user-input" placeholder="Type your message here..." autofocus>
+        <button onclick="sendMessage()">Send</button>
+    </div>
+    
+    <div class="footer">
+        <p>Minnesota state university property</p>
+    </div>
+    
+    <script>
+        function sendMessage() {
+            const userInput = document.getElementById('user-input').value;
+            fetch('../chat.py', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ message: userInput }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                const chatLog = document.getElementById('chat-log');
+                chatLog.innerHTML += `<div><strong>You:</strong> ${userInput}</div>`;
+                chatLog.innerHTML += `<div><strong>Bot:</strong> ${data.response}</div>`;
+                document.getElementById('user-input').value = '';
+                chatLog.scrollTop = chatLog.scrollHeight;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                const chatLog = document.getElementById('chat-log');
+                chatLog.innerHTML += `<div><strong>Bot:</strong> There was an error processing your request.</div>`;
+            });
+        }
+
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+    </script>
+</body>
+</html>
